@@ -11,17 +11,22 @@ public class Main {
                 new Person("Peter", "Black", new Address("Minsk", "Backer Street", 123)),
                 new Person("Jane", "White", new Address("Minsk", "Independence", 1)),
                 new Person("Kate", "Bow", new Address("Moskow", "New Street", 20)),
-                new Person(null, "WithoutName", new Address("City1", "Street1", 1)),
+                new Person(null, "WithoutName", new Address("City1", "Street1", 100)),
                 new Person("WithoutLastName", null, new Address("City2", "Street2", 2)),
-                new Person("WIthoutAddress", "WithoutAddress", null));
+                new Person("WithoutAddress", "WithoutAddress", null));
+
+        for (int i = 0; i < personList.size(); i++) {
+            System.out.println(personList.get(i));
+        }
 
 
         System.out.println("Task");
-        personList.stream()
-                .filter((Person person) -> (person.getFirstName() != null || person.getLastName() != null || person.getAddress() != null))
+        List<String> resultedPersonList = personList.stream()
+                .filter((Person person) -> (person.getFirstName() != null && person.getLastName() != null && person.getAddress() != null))
                 .sorted(Comparator.comparing((Person person) -> person.getAddress().getHouse()))
                 .map(Person::toString)
-                .collect(Collectors.toList()).forEach(System.out::println);
+                .collect(Collectors.toList());
 
+        System.out.println(resultedPersonList);
     }
 }

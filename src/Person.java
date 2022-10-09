@@ -5,19 +5,11 @@ public class Person {
 
 
     public Person(String firstName, String lastName, Address address)   {
-        if (firstName == null || lastName == null || address == null){
-        try {
-            throw new NullPointerException("Person instance fields cannot be empty");
-        } catch (NullPointerException e) {
-            System.out.println(e.getMessage());
-        }
-    }
-        else {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
     }
-}
+
 
     public String getFirstName() {
         return this.firstName;
@@ -30,11 +22,10 @@ public class Person {
     public Address getAddress() {
         return this.address;
     }
-
-    @Override
+ @Override
     public String toString() {
-        return lastName.toUpperCase() + " " + firstName + ", Address=" + getAddress();
-    }
+     return  "Person {" + lastName + " " + firstName + ", Address=" + address + "} ";
+ }
 }
 
 
